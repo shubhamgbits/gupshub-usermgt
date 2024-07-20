@@ -28,11 +28,25 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<postgressql.version>42.7.3</postgressql.version>
+		<jpa.version>3.3.2</jpa.version>
+		<aop.version>3.3.2</aop.version>
+		<sbs-logging.version>3.3.2</sbs-logging.version>
+		<sbs-security.version>3.3.2</sbs-security.version>
+		<spring--security.version>6.3.1</spring--security.version>
+		<spring-keycloak.version>24.0.5</spring-keycloak.version>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -40,10 +54,52 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Dependencies for Postgres -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>${jpa.version}</version>
+		</dependency>
+
+		<!-- Spring-boot starter Dependencies for AOP -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${aop.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<version>${sbs-logging.version}</version>
+		</dependency>
+
+		<!-- Dependencies needed to enable Spring Actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Dependency for Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${sbs-security.version}</version>
+		</dependency>
+
+
+		<!-- Mandatory dependency needed to integrate JWT -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.12.6</version>
 		</dependency>
 	</dependencies>
 
