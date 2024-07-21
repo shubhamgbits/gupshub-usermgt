@@ -13,10 +13,12 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String firstname;
+    private String lastname;
     private String username;
     private String email;
+    private String userId;
     private String password;
-    private String name;
     private String role;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -1,4 +1,4 @@
-package com.gupshub.usermanagement.repository;
+package com.gupshub.usermanagement.dao.repository;
 
 import com.gupshub.usermanagement.model.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;

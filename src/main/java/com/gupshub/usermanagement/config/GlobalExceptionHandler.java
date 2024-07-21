@@ -1,6 +1,9 @@
 package com.gupshub.usermanagement.config;
 
+import com.gupshub.usermanagement.model.exception.AuthorizationException;
 import com.gupshub.usermanagement.model.exception.BadRequestException;
+import com.gupshub.usermanagement.model.exception.DataConflictException;
+import com.gupshub.usermanagement.model.exception.DataNotFoundException;
 import com.gupshub.usermanagement.model.response.common.ErrorResponse;
 import com.gupshub.usermanagement.model.response.common.Response;
 import com.gupshub.usermanagement.util.ServiceUtil;
@@ -35,6 +38,39 @@ public class GlobalExceptionHandler {
                 .body(ErrorResponse.get(
                         ServiceUtil.BAD_REQUEST_ERROR_CODE,
                         "Bad Request"
+                ));
+    }
+
+    @ExceptionHandler(DataConflictException.class)
+    public ResponseEntity<Response> handleDataConflictException(DataConflictException e) {
+        log.debug("Caught DataConflictException : {}", e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(ErrorResponse.get(
+                        ServiceUtil.DATA_CONFLICT,
+                        e.getMessage()
+                ));
+    }
+
+    @ExceptionHandler(DataNotFoundException.class)
+    public ResponseEntity<Response> handleDataConflictException(DataNotFoundException e) {
+        log.debug("Caught DataNotFoundException : {}", e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ErrorResponse.get(
+                        ServiceUtil.DATA_NOT_FOUND,
+                        e.getMessage()
+                ));
+    }
+
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<Response> handleAuthorizationException(AuthorizationException e) {
+        log.debug("Caught AuthorizationException : {}", e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(ErrorResponse.get(
+                        ServiceUtil.UNAUTHORIZED,
+                        e.getMessage()
                 ));
     }
 }

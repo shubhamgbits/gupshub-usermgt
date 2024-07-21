@@ -1,7 +1,7 @@
 package com.gupshub.usermanagement.jwt;
 
 import com.gupshub.usermanagement.model.entity.UserInfo;
-import com.gupshub.usermanagement.repository.UserManagementRepository;
+import com.gupshub.usermanagement.dao.repository.UserManagementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
